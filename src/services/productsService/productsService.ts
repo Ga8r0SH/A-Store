@@ -1,11 +1,22 @@
 import http from "../http";
-import { ProductsInterface } from "./products-response.interface";
+import { Product,ProductsInterface } from "./products-response.interface";
 
-const getAllProducts = async (): Promise<ProductsInterface[]> => {
-    const response = await http.get<ProductsInterface[]>("products");
-    return response.data;
+const getAllProducts = async (): Promise<Product[]> => {
+    const response = await http.get<ProductsInterface<Product>>("products");
+    return response.data.products;
 }
 
+const getProdCategory = async (device: string): Promise<Product[]> => {
+    const response = await http.get<ProductsInterface<Product>>(`products/category/${device}`);
+    return response.data.products;
+}
+
+const getSearchProducts = async () : Promise<Product[]> => {
+    const responce = await http.get<ProductsInterface<Product>>("search?q=title");
+    return responce.data.products;
+}
 export {
-    getAllProducts
+    getAllProducts,
+    getProdCategory,
+    getSearchProducts
 }

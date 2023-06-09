@@ -1,21 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import Products from "./ProductsAll";
-import { ProductsInterface } from '../../services/productsService/products-response.interface';
+import { useEffect, useState } from 'react';
+import ProductsAll from "./ProductsAll";
+import { Product} from '../../services/productsService/products-response.interface';
 import { getAllProducts } from '../../services/productsService/productsService';
 
-const ProductList: React.FC = () => {
-    const [products, setProducts] = useState<ProductsInterface[]>([]);
+
+
+const ProductList = () => {
+    const [products, setProducts] = useState<Product[]>();
+    
         useEffect(()=>{
             getAllProducts()
             .then((data)=>{
-                console.log(data);
+                setProducts(data)
             })
         },[])
 
     return (
-        <Products
-            
+        <div>
+        <ProductsAll
+        products={products}
         />
+        </div>
+     
+      
     );
 }
 

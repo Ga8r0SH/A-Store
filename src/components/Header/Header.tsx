@@ -1,7 +1,17 @@
 import { NavLink } from "react-router-dom";
 import photo from "./search.png";
+import { useState } from "react";
+
 
 const Header = () => {
+
+
+    const [query , setQuery] = useState(''); 
+    const setValue = (event: React.ChangeEvent<HTMLInputElement>)=>{
+        setQuery(event.target.value)
+    }
+    
+
     return (
         <div className="header bg-slate-800 h-[100px] flex items-center shadow-2xl sticky top-0">
             <div className="container max-w-[1200px] mx-auto my-0">
@@ -19,7 +29,7 @@ const Header = () => {
                     </div>
                     <div className="search">
                         <form action="" className="flex justify-center">
-                            <input type="text" id="searchInput" placeholder="Поиск..." className="mr-5 rounded px-2 focus:outline-none"/>
+                            <input onChange={event => setQuery(event.target.value)} type="text" id="searchInput" placeholder="Поиск..." className="mr-5 rounded px-2 focus:outline-none"/>
                             <button type="submit"><img src={photo} alt="" className=""/></button>
                         </form>
                     </div>

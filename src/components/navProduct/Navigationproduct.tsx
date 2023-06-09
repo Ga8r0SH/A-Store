@@ -8,10 +8,9 @@ const Navigationproduct = () => {
                 <div className="wrapper__link mx-[30px] items-center mt-[25px]">
                     <ul className='flex justify-between px-[10px]'>
                         <li className="border px-[50px] py-2 text-lg rounded bg-slate-200"><NavLink to='/phone'>Телефоны</NavLink></li>
-                        <li className="border px-[50px] py-2 text-lg rounded bg-slate-200"><NavLink to='/'>Ноутбуки</NavLink></li>
-                        <li className="border px-[50px] py-2 text-lg rounded bg-slate-200"><NavLink to='/'>Планшеты</NavLink></li>
-                        <li className="border px-[50px] py-2 text-lg rounded bg-slate-200"><NavLink to='/'>Телевизоры</NavLink></li>
-                        <li className="border px-[50px] py-2 text-lg rounded bg-slate-200"><NavLink to='/'>Наушники</NavLink></li>
+                        <li className="border px-[50px] py-2 text-lg rounded bg-slate-200"><NavLink to='/nout'>Ноутбуки</NavLink></li>
+                        <li className="border px-[50px] py-2 text-lg rounded bg-slate-200"><NavLink to='/home-decoration'>Декорации</NavLink></li>
+                        <li className="border px-[50px] py-2 text-lg rounded bg-slate-200"><NavLink to='/furniture'>Мебель</NavLink></li>
                     </ul>
                 </div>
             </div>

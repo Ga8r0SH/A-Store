@@ -1,8 +1,23 @@
-export interface ProductsInterface {
+
+export interface ProductsInterface<Product>{
+    limit:number
+    products:Product[]
+    skip:number
+    total:number
+}
+
+
+export interface Product {
     id:number,
-    tittle:string,
+    title:string,
     description:string,
     price:number,
     stock:number,
     images:string[]
+    thumbnail:string,
+    category:string
 };
+
+export interface ProductCategoryInterface{
+    category:string
+}
