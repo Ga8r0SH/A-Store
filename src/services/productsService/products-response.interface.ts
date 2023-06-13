@@ -15,7 +15,8 @@ export interface Product {
     stock:number,
     images:string[]
     thumbnail:string,
-    category:string
+    category:string,
+    rating:number
 };
 
 export interface ProductCategoryInterface{
