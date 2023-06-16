@@ -9,49 +9,44 @@ type Props = {
     password: string
 }
 
-const SignUp = ({handleSignIn, setUsername, setPassword, username, password}:Props) => {
+const SignUp = ({ handleSignIn, setUsername, setPassword, username, password }: Props) => {
 
     let onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
     }
 
     return (
-        <div className="h-screen bg-gradient-to-b from-blue-500 to-white h-screen">
-            <div className="container">
-                <div className="h-screen text-center font-sans flex items-center justify-center">
-                    <form onSubmit={handleSignIn} className="border w-[500px] appearance-none shadow-lg rounded text-black-700 leading-tight">
-                        <div className="p-6">
-                            
-                            <p className="text-2xl underline font-medium mb-4">Sign In</p>
-                            <input 
-                                value={username} 
-                                onChange={(e) => setUsername(e.target.value)} 
-                                className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" 
-                                type="text" 
-                            />
-                            <input 
-                                value={password} 
-                                onChange={onPasswordChange} 
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" 
-                                type="password" 
-                            />
-                            <div className="flex justify-between mb-4">
-                                <div className="flex items-center">
-                                    <input type="checkbox" id="rememberMe" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                    <label htmlFor="rememberMe" className="ml-2 text-sm text-gray-900 font-semibold">Remember Me</label>
-                                </div>
-                                <div className="text-sm font-medium">
-                                    Sign Up?
-                                </div>
+        <div className="h-screen bg-gradient-to- from-blue-400 to-white h-screen">
+            <div className="min-h-screen bg-gradient-to-tr from-blue-500 to-white py-6 flex flex-col justify-center sm:py-12">
+                <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+                    <div
+                        className="absolute inset-0 bg-gradient-to-r from-blue-300 to-blue-600 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+                    </div>
+                    <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+                        <div className="max-w-md mx-auto">
+                            <div>
+                                <h1 className="text-2xl font-semibold">Login Form with Floating Labels</h1>
                             </div>
-                            <button
-                                disabled={!username && !password}
-                                className="w-full bg-black text-stone-50 p-2 font-medium rounded disabled:opacity-30"
-                            >
-                                Login
-                            </button>
+                            <form onSubmit={handleSignIn} className="divide-y divide-gray-200">
+                                <div className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                                    <div className="relative">
+                                        <input value={username}
+                                            onChange={(e) => setUsername(e.target.value)} autoComplete="off" id="email" name="email" type="text" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email address" />
+                                        <label htmlFor="email" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Email Address</label>
+                                    </div>
+                                    <div className="relative">
+                                        <input
+                                            value={password}
+                                            onChange={onPasswordChange} autoComplete="off" id="password" name="password" type="password" className="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" />
+                                        <label htmlFor="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
+                                    </div>
+                                    <div className="relative">
+                                        <button disabled={!username && !password} className="bg-blue-500 text-white rounded-md px-2 py-1">Login</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
