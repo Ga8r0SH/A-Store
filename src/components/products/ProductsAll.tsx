@@ -1,13 +1,31 @@
 import { NavLink } from "react-router-dom";
-import { Product } from "../../services/productsService/products-response.interface";
+import { Product, createNewProduct } from "../../services/productsService/products-response.interface";
+import Modal from "./modalWindow/Modal";
+
 type Props = {
     products: Product[] | undefined;
+    addProduct: createNewProduct
+    setAddProduct: React.Dispatch<React.SetStateAction<createNewProduct>>;
+    onAddProduct:(e:React.FormEvent<HTMLFormElement>) => void;
 }
 
-const Products = ({ products }: Props) => {
+const Products = ({ products,setAddProduct, addProduct , onAddProduct }: Props) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+        const { name, value } = event.target;
+        setAddProduct((prevFormData) => ({
+            ...prevFormData,
+            [name]: value
+        }));
+    };
+
     return (
 
         <div className="product">
+            <Modal
+                handleInputChange={handleInputChange}
+                addProduct={addProduct}
+                onAddProduct={onAddProduct}
+            />
             <div className="container max-w-[1200px] mx-auto my-0">
                 <div className="wrpaper__product flex justify-between flex-wrap mt-10">
                     {products && products.map((product) => (

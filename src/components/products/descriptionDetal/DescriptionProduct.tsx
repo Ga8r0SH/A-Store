@@ -1,13 +1,62 @@
-import { Product } from "../../../services/productsService/products-response.interface";
+import { Product, createNewProduct, updateProduct } from "../../../services/productsService/products-response.interface";
+import { deleteProduct, updateProducts } from "../../../services/productsService/productsService";
+import ModalWindowDel from "../modalWindow/ModalWindowDel";
+import ModalWindowUpl from "../modalWindow/ModalWindowUpl";
+import { useState } from 'react';
 
 type Props = {
     descprod: Product | undefined;
 }
 
 const DescriptionProduct = ({ descprod }: Props) => {
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
+        const { name, value } = event.target;
+        setUpdateProduct((prevFormData) => ({
+            ...prevFormData,
+            [name]: prevFormData ? value : '',
+        }));
+    };
+
+    const [updateProduct, setUpdateProduct] = useState<updateProduct>({
+        id: descprod?.id,
+        title: descprod?.title,
+        price: descprod?.price,
+        description: descprod?.description,
+        thumbnail: descprod?.thumbnail,
+        rating: descprod?.rating
+    });
+
+    const onUpdateProduct = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        updateProducts(updateProduct)
+            .then(response => {
+                console.log(response)
+            })
+    }
+// Удаление элемента по ID
+    const onDeleteProduct = (id: number | undefined) => {
+        if (id) {
+            deleteProduct(id)
+                .then(data => {
+                    console.log(data)
+                })
+        }
+    }
+
     return (
         <div>
-            <div className="container max-w-[1200px] mx-auto my-0 px-[30px]">
+            <ModalWindowUpl
+                updateProduct={updateProduct}
+                onUpdateProduct={onUpdateProduct}
+                setUpdateProduct={setUpdateProduct}
+                handleInputChange={handleInputChange}
+
+            />
+            <ModalWindowDel
+                onDeleteProduct={onDeleteProduct}
+                descprod={descprod}
+            />
+            <div className="container max-w-[1200px] mx-auto my-0 px-[30px] mb-10">
                 <div className="descProduct flex justify-center flex-wrap mt-10 bg-gray-200 py-5 rounded-[10px]">
                     <div className="imagesProduct">
                         <div className="image">
@@ -42,7 +91,7 @@ const DescriptionProduct = ({ descprod }: Props) => {
                             <a
                                 className="inline-flex items-center justify-center rounded-md border border-black py-4 px-10 text-center text-base text-black transition hover:border-black hover:bg-black hover:text-white lg:px-8 xl:px-10"
                             >
-                               Add to card
+                                Add to card
                             </a>
                         </div>
                     </div>
