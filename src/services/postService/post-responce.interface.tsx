@@ -10,5 +10,6 @@ export interface Posts{
     title:string,
     userId:number,
     tags:string[],
-    reactions:number
+    reactions:number,
+    images:string
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Posts } from "../../services/postService/post-responce.interface";
 import pngwing from './imagePosts.png';
 import like from './like.png';
-import ComentUI from "../comentaries/ComentUI";
+import ComentUI from "../Comentaries/ComentUI";
 import { CommentBody } from "../../services/comentService/coment-respnce.interface";
 
 
@@ -23,9 +23,9 @@ const Post = ({ post, onCreateComent , com }: Props) => {
     return (
         <div className="Posts">
             {post && post.map((item) => (
-                <div className="warapper  bg-white my-5 rounded-2xl px-5 shadow-purple-400 shadow-2xl ">
-                    <div className="title font-extrabold text-2xl py-10 flex justify-between ">
-                        {item.title} <img src={pngwing} alt="" />
+                <div className="warapper  bg-white my-5 rounded-2xl px-5 shadow-2xl ">
+                    <div className="title font-semibold text-2xl py-6 flex  ">
+                        {item.title} 
                     </div>
                     <div className="body font-mono text-lg text-[15px] pb-5 relative">
                         {item.body}
@@ -36,7 +36,7 @@ const Post = ({ post, onCreateComent , com }: Props) => {
                     </div>
                     <div className="pb-5 text-right flex justify-between ">
                         <div className="comentriu">
-                            <button className="border-2 mt-5 p-2 rounded-xl" type="submit" onClick={() => openComponents(item.id)}>Comments </button>
+                            <button className=" bg-gray-700 hover:bg-gray-900 transition duration-300 text-white font-semibold py-2 px-4 rounded" type="submit" onClick={() => openComponents(item.id)}>Comments </button>
 
                         </div>
 

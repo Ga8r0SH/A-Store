@@ -12,29 +12,29 @@ const getProdCategory = async (device: string): Promise<Product[]> => {
 }
 
 const getSearchProducts = async (query: string): Promise<Product[]> => {
-    const responce = await http.get<ProductsInterface<Product>>(`products/search?q=${query}`);
-    return responce.data.products;
+    const response = await http.get<ProductsInterface<Product>>(`products/search?q=${query}`);
+    return response.data.products;
 }
 
 const getProductId = async (id: number): Promise<Product> => {
-    const responce = await http.get<Product>(`products/${id}`);
-    return responce.data
+    const response = await http.get<Product>(`products/${id}`);
+    return response.data
 }
 
 const createNewProducts = async (product: createNewProduct) => {
-    const responce = await http.post<Product>(`products/add`, { product });
-    return responce;
+    const response = await http.post<Product>(`products/add`, { product });
+    return response;
 }
 
 const updateProducts = async (data: updateProduct) => {
-    const responce = await http.put<updateProduct>(`products/${data.id}`, { data });
-    return responce;
+    const response = await http.put<updateProduct>(`products/${data.id}`, { data });
+    return response;
 
 }
 
 const deleteProduct = async (id:number| undefined) => {
-    const responce = await http.delete<updateProduct>(`products/${id}`)
-    return responce.data;
+    const response = await http.delete<updateProduct>(`products/${id}`)
+    return response.data;
 }
 
 export {

@@ -15,7 +15,7 @@ export interface Users {
     phone: string,
     birthDate: string,
     maidenName: string,
-    username:string
+    username: string
     company: {
         title: string,
         address: {
@@ -23,4 +23,18 @@ export interface Users {
             address: string
         }
     }
+}
+
+export interface Searchuser<SearchUserInterface> {
+    users: SearchUserInterface[]
+    total: number
+    skip: number
+    limit: number
+}
+export interface SearchUserInterface {
+    id: number
+    firstName: string
+    lastName: string
+    image: string
+
 }

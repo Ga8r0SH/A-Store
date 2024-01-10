@@ -56,7 +56,7 @@ const DescriptionProduct = ({ descprod }: Props) => {
                 onDeleteProduct={onDeleteProduct}
                 descprod={descprod}
             />
-            <div className="container max-w-[1200px] mx-auto my-0 px-[30px] mb-10">
+            <div className="container max-w-[1200px] mx-auto px-[30px] pb-10 ">
                 <div className="descProduct flex justify-center flex-wrap mt-10 bg-gray-200 py-5 rounded-[10px]">
                     <div className="imagesProduct">
                         <div className="image">

@@ -13,7 +13,7 @@ const ComentUI = ({ com, postId }: Props) => {
             {com && com.map((commentaries) => (
                 <div className="">
                     {postId === commentaries.postId &&
-                        <div className="my-5 p-3 border-2 rounded-2xl">
+                        <div className="my-5 p-3 border-2 border-green-600 rounded-2xl">
                             <div className="flex items-center">
                                 <div><img src={person} alt="" /></div>
                                 <div className="ml-5">
@@ -25,7 +25,6 @@ const ComentUI = ({ com, postId }: Props) => {
 
                         </div>
                     }
-
                 </div>
             ))}
         </div>

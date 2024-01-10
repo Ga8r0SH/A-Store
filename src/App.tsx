@@ -1,13 +1,13 @@
-import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
 import ProductList from './components/products/ProductsAPI';
 import SignUpAPI from './components/SignUpAPI';
 import Navigationproduct from './components/navProduct/Navigationproduct';
 import PhonecategoryAPI from './components/navProduct/phone/PhonecategoryAPI';
 import HeaderAPI from './components/Header/HeaderAPI';
 import DescriptionProductAPI from './components/products/descriptionDetal/DescriptionProductAPI';
-
 import Footer from './components/footer/Footer';
 import HomepageAPI from './components/homePage/HomepageAPI';
+import { useEffect } from 'react';
 
 
 const Dashboard = () => {
@@ -33,9 +33,13 @@ const ProductsBoard = () => {
 }
 
 function App() {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("access_token");
+  useEffect(() => {
+    !token && navigate('/sign-in')
+  }, [token, navigate])
   return (
-    <BrowserRouter>
-      <div className="App font-serif">
+      <div className="App">
         <Routes>
           <Route path='/' element={<Dashboard />}>
             <Route path='/homepage/:id' element={<HomepageAPI />} />
@@ -51,7 +55,6 @@ function App() {
           <Route path={'/sign-in'} element={<SignUpAPI />} />
         </Routes>
       </div>
-    </BrowserRouter >
   );
 }
 

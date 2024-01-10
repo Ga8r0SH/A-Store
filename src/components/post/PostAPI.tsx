@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import { getPost } from "../../services/postService/prostService"
-import Preloader from "../navProduct/preloader/Preloader";
 import { Posts } from "../../services/postService/post-responce.interface";
 import Post from "./Posts";
 import { getAllComment } from "../../services/comentService/comentService";

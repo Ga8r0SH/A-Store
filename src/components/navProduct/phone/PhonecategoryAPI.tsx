@@ -31,7 +31,7 @@ const PhonecategoryAPI = ({ categoryProps }: Props) => {
 
 
     return (
-        <div>
+        <div className="">
             {reloading ? <Preloader /> :
                 <Phonecategory
                     products={products}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SignUp from './SignUp';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,14 +11,12 @@ const SignUpAPI = () => {
     const [password, setPassword] = useState<string>("");
     const navigate = useNavigate();
 
-
-
-    const handleSignIn = async(e: React.FormEvent<HTMLFormElement> ) => {
+    const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        login({username, password})
+        login({ username, password })
             .then((data) => {
                 localStorage.setItem("access_token", data.token);
-                localStorage.setItem("id",data.id.toString())
+                localStorage.setItem("id", data.id.toString())
                 navigate(`/homepage/${data.id}`);
             })
             .catch((er) => {
@@ -29,7 +27,7 @@ const SignUpAPI = () => {
     }
 
     return (
-        <SignUp 
+        <SignUp
             handleSignIn={handleSignIn}
             setUsername={setUsername}
             setPassword={setPassword}

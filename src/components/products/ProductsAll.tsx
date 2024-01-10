@@ -20,20 +20,20 @@ const Products = ({ products,setAddProduct, addProduct , onAddProduct }: Props) 
 
     return (
 
-        <div className="product">
+        <div className="product bg-red-50 ">
             <Modal
                 handleInputChange={handleInputChange}
                 addProduct={addProduct}
                 onAddProduct={onAddProduct}
             />
-            <div className="container max-w-[1200px] mx-auto my-0">
-                <div className="wrpaper__product flex justify-between flex-wrap mt-10">
+            <div className="container max-w-[1200px] mx-auto my-0 ">
+                <div className="wrpaper__product flex justify-between flex-wrap pt-10">
                     {products && products.map((product) => (
-                        <div key={product.id} className="flex flex-col mb-5 justify-between w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+                        <div key={product.id} className="flex flex-col mb-5 justify-between w-full max-w-sm bg-white border border-gray-200 rounded-xl shadow-xl">
                             <NavLink to={`/products/${product.id}`}>
-                                <div>
-                                    <img className="p-8 rounded-t-lg" src={product.thumbnail} alt="product" />
-                                    <div className="px-5 pb-5">
+                                <div className="p-4">
+                                    <img className="rounded-xl max-h-[250px] w-auto m-auto" src={product.thumbnail} alt="product" />
+                                    <div className="px-5 py-7">
                                         <h5 className="text-xl font-semibold tracking-tight">{product.description}</h5>
                                     </div>
                                 </div>
